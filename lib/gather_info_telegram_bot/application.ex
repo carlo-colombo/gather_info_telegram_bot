@@ -15,7 +15,8 @@ defmodule GatherInfoTelegramBot.Application do
         scheme: :http,
         plug: GatherInfoTelegramBot.Router,
         options: [port: 9021]
-      )
+      ),
+      GatherInfoTelegramBot.Register
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
