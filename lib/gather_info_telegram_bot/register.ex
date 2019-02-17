@@ -10,9 +10,11 @@ defmodule GatherInfoTelegramBot.Register do
   defp register do
     own = System.get_env("OWN_ADDRESS")
     register = System.get_env("REGISTER_ADDRESS")
+    token = System.get_env("TELEGRAM_BOT_TOKEN")
+    address = "#{register}/bot#{token}/setwebhook"
 
-    Logger.info "Registering '#{own}' on register '#{register}'"
-    {:ok, _} = HTTPoison.put(register, Jason.encode!(%{
+    Logger.info "Registering '#{own}' on register '#{address}'"
+    {:ok, _} = HTTPoison.put(address, Jason.encode!(%{
       "url" => own
     }))
   end
