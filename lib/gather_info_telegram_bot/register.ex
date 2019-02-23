@@ -13,10 +13,18 @@ defmodule GatherInfoTelegramBot.Register do
     token = System.get_env("TELEGRAM_BOT_TOKEN")
     address = "#{register}/bot#{token}/setwebhook"
 
-    Logger.info "Registering '#{own}' on register '#{address}'"
-    {:ok, _} = HTTPoison.put(address, Jason.encode!(%{
-      "url" => own
-    }))
+    Logger.info("Registering '#{own}' on register '#{address}'")
+
+    case HTTPoison.put(
+           address,
+           Jason.encode!(%{
+             "url" => own
+           }),
+           [{"Content-Type", "application/json"}]
+         ) do
+      {:ok, _} -> :ok
+      {:error, error} -> Logger.error(inspect(error))
+    end
   end
 
   def run() do
