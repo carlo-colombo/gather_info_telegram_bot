@@ -27,7 +27,7 @@ defmodule GatherInfoTelegramBot.MixProject do
       {:nadia, "~> 0.4.4"},
       {:exsync, "~> 0.2", only: :dev},
       {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.2.3", only: [:dev, :test], runtime: false},
       {:mox, "~> 0.4.0", only: :test},
       {:distillery, "~> 2.0"}
     ]
